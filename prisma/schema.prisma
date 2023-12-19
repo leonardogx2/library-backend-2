@@ -6,12 +6,12 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "mongodb"
   url      = env("DATABASE_URL")
 }
 
 model User {
-  id       String @id
+  id       String @id @map("_id")
   name     String
   email    String @unique
   password String
@@ -20,7 +20,7 @@ model User {
 }
 
 model Book {
-  id              String   @id
+  id              String   @id @map("_id")
   title           String
   author          String
   genre           String
@@ -34,7 +34,7 @@ model Book {
 }
 
 model Rent {
-  id             String   @id
+  id             String   @id @map("_id")
   student_name   String
   class          String
   deliveryDate   DateTime
